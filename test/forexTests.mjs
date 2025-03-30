@@ -20,6 +20,7 @@ describe("Bank of Canada Forex API", function () {
 
     it("should calculate the average CAD to USD rate for the last 10 weeks", async function () {
         const data = await getForexRates("FXUSDCAD");
+        console.log(data.observations);
         const avgRate = calculateAverageRate(data.observations, "FXUSDCAD");
         expect(avgRate).to.be.a("number"). that.is.greaterThan(0);
     });

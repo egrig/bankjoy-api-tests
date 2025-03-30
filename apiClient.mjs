@@ -14,7 +14,13 @@ export async function getForexRates(series) {
     }
 }
 
-export function calculateAverageRate(observations, key) { // Corrected the typo
-    const rates = observations.map((obs) => parseFloat(obs[key]));
+export function calculateAverageRate(observations, key) {
+    const rates = observations.map((obs) => {
+        const rate = parseFloat(obs[key]);
+        if (isNaN(rate)) {
+            throw new Error(`Rate not found for key: ${key}`);
+        }
+        return rate;
+    });
     return rates.reduce((sum, rate) => sum + rate, 0) / rates.length;
 }

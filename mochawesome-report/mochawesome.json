@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 4,
-    "start": "2025-03-30T18:27:29.367Z",
-    "end": "2025-03-30T18:27:30.787Z",
-    "duration": 1420,
+    "start": "2025-03-30T18:36:55.990Z",
+    "end": "2025-03-30T18:36:57.710Z",
+    "duration": 1720,
     "testsRegistered": 7,
     "passPercent": 42.857142857142854,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "0db15e7b-40a3-440c-92a4-f3e4f2c0791a",
+      "uuid": "a1e2113b-8573-4fdc-961b-95d088143031",
       "title": "",
       "fullFile": "/Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs",
       "file": "/test/forexTests.mjs",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+          "uuid": "3f75fe49-749c-4332-a14c-4deaefc7369e",
           "title": "Bank of Canada Forex API",
           "fullFile": "/Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs",
           "file": "/test/forexTests.mjs",
@@ -38,7 +38,7 @@
               "title": "should fetch CAD to USD conversion rates for the last 10 weeks",
               "fullTitle": "Bank of Canada Forex API should fetch CAD to USD conversion rates for the last 10 weeks",
               "timedOut": false,
-              "duration": 164,
+              "duration": 144,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "const data = await getForexRates(\"FXUSDCAD\");\nexpect(data).to.have.property(\"observations\").that.is.an(\"array\");\nexpect(data.observations).to.have.length.greaterThan(0);",
               "err": {},
-              "uuid": "a8b8fa6f-4c11-4207-9edb-e8378904e0aa",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "bb56aa91-3fe2-4329-a120-3b7e62733ab0",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should fail gracefully when requesting an invalid currency pair",
               "fullTitle": "Bank of Canada Forex API should fail gracefully when requesting an invalid currency pair",
               "timedOut": false,
-              "duration": 257,
+              "duration": 664,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "try {\n    await getForexRates(\"INVALID_PAIR\");\n} catch (error) {\n    expect(error.message).to.include(\"API request failed:\");\n}",
               "err": {},
-              "uuid": "6efdc7f9-0509-41f0-9d0c-4aaa5516fa4e",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "44b40fb4-7f25-4a44-b781-f073ef4cce34",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             },
@@ -74,21 +74,21 @@
               "title": "should calculate the average CAD to USD rate for the last 10 weeks",
               "fullTitle": "Bank of Canada Forex API should calculate the average CAD to USD rate for the last 10 weeks",
               "timedOut": false,
-              "duration": 93,
+              "duration": 99,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
               "context": null,
-              "code": "const data = await getForexRates(\"FXUSDCAD\");\nconst avgRate = calculateAverageRate(data.observations, \"FXUSDCAD\");\nexpect(avgRate).to.be.a(\"number\"). that.is.greaterThan(0);",
+              "code": "const data = await getForexRates(\"FXUSDCAD\");\nconsole.log(data.observations);\nconst avgRate = calculateAverageRate(data.observations, \"FXUSDCAD\");\nexpect(avgRate).to.be.a(\"number\"). that.is.greaterThan(0);",
               "err": {
-                "message": "AssertionError: expected NaN to be above +0",
-                "estack": "AssertionError: expected NaN to be above +0\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:24:52)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
-                "diff": "- NaN\n+ 0\n"
+                "message": "Error: Rate not found for key: FXUSDCAD",
+                "estack": "Error: Rate not found for key: FXUSDCAD\n    at file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:21:19\n    at Array.map (<anonymous>)\n    at calculateAverageRate (file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:18:32)\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:24:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": null
               },
-              "uuid": "55869e02-bcd5-4021-a7b2-b91edc3815ed",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "50222866-d0b7-4fc2-ab0a-a9dbbe9b2c53",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             },
@@ -96,7 +96,7 @@
               "title": "should return an error for an empty response",
               "fullTitle": "Bank of Canada Forex API should return an error for an empty response",
               "timedOut": false,
-              "duration": 641,
+              "duration": 557,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -105,8 +105,8 @@
               "context": null,
               "code": "try {\n    await getForexRates(\"\");\n} catch (error) {\n    expect(error.message).to.include(\"API request failed\");\n}",
               "err": {},
-              "uuid": "3f5b589b-b0d8-417c-8a15-69933ea4db03",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "c4cbc4d5-e01f-44df-ab97-659a091a7436",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             },
@@ -114,7 +114,7 @@
               "title": "should fetch and calculate average for FXUSDCAD",
               "fullTitle": "Bank of Canada Forex API should fetch and calculate average for FXUSDCAD",
               "timedOut": false,
-              "duration": 87,
+              "duration": 84,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -123,12 +123,12 @@
               "context": null,
               "code": "const data = await getForexRates(pair);\nconst avgRate = calculateAverageRate(data.observations, pair);\nexpect(avgRate).to.be.a(\"number\").that.is.greaterThan(0);",
               "err": {
-                "message": "AssertionError: expected NaN to be above +0",
-                "estack": "AssertionError: expected NaN to be above +0\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:41:55)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
-                "diff": "- NaN\n+ 0\n"
+                "message": "Error: Rate not found for key: FXUSDCAD",
+                "estack": "Error: Rate not found for key: FXUSDCAD\n    at file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:21:19\n    at Array.map (<anonymous>)\n    at calculateAverageRate (file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:18:32)\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:41:29)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": null
               },
-              "uuid": "13d751d3-455f-4247-92b9-c5b1f3ae469c",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "26f70dbc-9416-440f-b851-43b9c20c3f79",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             },
@@ -136,7 +136,7 @@
               "title": "should fetch and calculate average for FXEURCAD",
               "fullTitle": "Bank of Canada Forex API should fetch and calculate average for FXEURCAD",
               "timedOut": false,
-              "duration": 79,
+              "duration": 82,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -145,12 +145,12 @@
               "context": null,
               "code": "const data = await getForexRates(pair);\nconst avgRate = calculateAverageRate(data.observations, pair);\nexpect(avgRate).to.be.a(\"number\").that.is.greaterThan(0);",
               "err": {
-                "message": "AssertionError: expected NaN to be above +0",
-                "estack": "AssertionError: expected NaN to be above +0\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:41:55)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
-                "diff": "- NaN\n+ 0\n"
+                "message": "Error: Rate not found for key: FXEURCAD",
+                "estack": "Error: Rate not found for key: FXEURCAD\n    at file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:21:19\n    at Array.map (<anonymous>)\n    at calculateAverageRate (file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:18:32)\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:41:29)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": null
               },
-              "uuid": "a3efb87e-babf-4c5c-ad51-fa7346dc22b1",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "242fba09-3126-4e6a-bc64-ffc40f7a1dfc",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             },
@@ -158,7 +158,7 @@
               "title": "should fetch and calculate average for FXGBPCAD",
               "fullTitle": "Bank of Canada Forex API should fetch and calculate average for FXGBPCAD",
               "timedOut": false,
-              "duration": 91,
+              "duration": 83,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -167,31 +167,31 @@
               "context": null,
               "code": "const data = await getForexRates(pair);\nconst avgRate = calculateAverageRate(data.observations, pair);\nexpect(avgRate).to.be.a(\"number\").that.is.greaterThan(0);",
               "err": {
-                "message": "AssertionError: expected NaN to be above +0",
-                "estack": "AssertionError: expected NaN to be above +0\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:41:55)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
-                "diff": "- NaN\n+ 0\n"
+                "message": "Error: Rate not found for key: FXGBPCAD",
+                "estack": "Error: Rate not found for key: FXGBPCAD\n    at file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:21:19\n    at Array.map (<anonymous>)\n    at calculateAverageRate (file:///Users/edward/Desktop/bankjoy-api-tests/apiClient.mjs:18:32)\n    at Context.<anonymous> (file:///Users/edward/Desktop/bankjoy-api-tests/test/forexTests.mjs:41:29)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": null
               },
-              "uuid": "51b8d1a9-c0ed-479e-9e64-80b408d11229",
-              "parentUUID": "6d44a372-1d11-40cc-8744-af4c62e7fe09",
+              "uuid": "52d2b4f8-afec-470c-b4b6-d52751b91a24",
+              "parentUUID": "3f75fe49-749c-4332-a14c-4deaefc7369e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a8b8fa6f-4c11-4207-9edb-e8378904e0aa",
-            "6efdc7f9-0509-41f0-9d0c-4aaa5516fa4e",
-            "3f5b589b-b0d8-417c-8a15-69933ea4db03"
+            "bb56aa91-3fe2-4329-a120-3b7e62733ab0",
+            "44b40fb4-7f25-4a44-b781-f073ef4cce34",
+            "c4cbc4d5-e01f-44df-ab97-659a091a7436"
           ],
           "failures": [
-            "55869e02-bcd5-4021-a7b2-b91edc3815ed",
-            "13d751d3-455f-4247-92b9-c5b1f3ae469c",
-            "a3efb87e-babf-4c5c-ad51-fa7346dc22b1",
-            "51b8d1a9-c0ed-479e-9e64-80b408d11229"
+            "50222866-d0b7-4fc2-ab0a-a9dbbe9b2c53",
+            "26f70dbc-9416-440f-b851-43b9c20c3f79",
+            "242fba09-3126-4e6a-bc64-ffc40f7a1dfc",
+            "52d2b4f8-afec-470c-b4b6-d52751b91a24"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 1412,
+          "duration": 1713,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
