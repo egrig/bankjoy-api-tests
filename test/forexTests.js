@@ -24,4 +24,12 @@ describe("Bank of Canada Forex API", function () {
         const avgRate = calculateAverageRate(data.observations, "FXUSDCAD");
         expect(avgRate).to.be.a("number"). that.is.greaterThan(0);
     });
+
+    it("should return an error for an empty response", async function () {
+        try {
+            await getForexRates("");
+        } catch (error) {
+            expect(error.message).to.include("API request failed");
+        }
+    })
 })
