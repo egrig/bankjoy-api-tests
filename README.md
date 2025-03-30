@@ -19,3 +19,12 @@ The tests are designed to verify the fetching and calculation of exchange rates 
 
    ```bash
    npm install
+
+## Running the Tests
+To execute the tests, run the following command:
+
+npm test
+
+## Observations
+The API responses contain exchange rates nested within a v property for each date.
+Tests cover basic functionalities such as fetching rates, graceful failover for invalid inputs, and calculation of average rates.
