@@ -16,7 +16,7 @@ export async function getForexRates(series) {
 
 export function calculateAverageRate(observations, key) {
     const rates = observations.map((obs) => {
-        const rate = parseFloat(obs[key]);
+        const rate = parseFloat(obs[key]?.v);
         if (isNaN(rate)) {
             throw new Error(`Rate not found for key: ${key}`);
         }

@@ -1,8 +1,8 @@
-import { expect } from 'chai';  // Import expect directly from chai
+import { expect } from 'chai'; 
 import { getForexRates, calculateAverageRate } from "../apiClient.mjs";
 
 describe("Bank of Canada Forex API", function () {
-    this.timeout(10000);    //Increase timeout for API calls
+    this.timeout(10000); 
 
     it("should fetch CAD to USD conversion rates for the last 10 weeks", async function () {
         const data = await getForexRates("FXUSDCAD");
@@ -20,7 +20,6 @@ describe("Bank of Canada Forex API", function () {
 
     it("should calculate the average CAD to USD rate for the last 10 weeks", async function () {
         const data = await getForexRates("FXUSDCAD");
-        console.log(data.observations);
         const avgRate = calculateAverageRate(data.observations, "FXUSDCAD");
         expect(avgRate).to.be.a("number"). that.is.greaterThan(0);
     });
