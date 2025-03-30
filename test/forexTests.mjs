@@ -1,6 +1,5 @@
-const { expect } = require("chai");
-const { getForexRates } = require("../apiClient");
-const { calculateAverageRate } = require("../apiClient");
+import { expect } from 'chai';  // Import expect directly from chai
+import { getForexRates, calculateAverageRate } from "../apiClient.mjs";
 
 describe("Bank of Canada Forex API", function () {
     this.timeout(10000);    //Increase timeout for API calls
