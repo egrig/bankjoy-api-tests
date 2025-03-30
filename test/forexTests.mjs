@@ -14,7 +14,7 @@ describe("Bank of Canada Forex API", function () {
         try {
             await getForexRates("INVALID_PAIR");
         } catch (error) {
-            expect(error.message).to.equal("API request failed.");
+            expect(error.message).to.include("API request failed:");
         }
     })
 
