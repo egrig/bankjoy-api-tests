@@ -32,11 +32,11 @@ Tests cover basic functionalities such as fetching rates, graceful failover for 
 ## Potential Improvements
 Given more time, additional improvements could include:
 
-Comprehensive Error Handling: Improve error messages to provide more context.
-Test Coverage: Add more test cases for different scenarios and edge cases.
-CI/CD Integration: Set up continuous integration to automate test execution.
-Environment Configurations: Parameterize API URLs and other configurations for different environments (e.g., staging, production).
-Performance Testing: Implement tests to measure and improve the performance of API requests.
+1. Comprehensive Error Handling: Improve error messages to provide more context.
+2. Test Coverage: Add more test cases for different scenarios and edge cases.
+3. CI/CD Integration: Set up continuous integration to automate test execution.
+4. Environment Configurations: Parameterize API URLs and other configurations for different environments (e.g., staging, production).
+5. Performance Testing: Implement tests to measure and improve the performance of API requests.
 
 ## Additional Notes
 While running the tests, ensure that the Bank of Canada's Forex API is accessible and responsive. Any issues in connectivity might affect the tests' execution.
