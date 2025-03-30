@@ -32,4 +32,14 @@ describe("Bank of Canada Forex API", function () {
             expect(error.message).to.include("API request failed");
         }
     })
+
+    const currencyPairs = ["FXUSDCAD", "FXEURCAD", "FXGBPCAD"];
+
+    currencyPairs.forEach((pair) => {
+        it(`should fetch and calculate average for ${pair}`, async function () {
+            const data = await getForexRates(pair);
+            const avgRate = calculateAverageRate(data.observations, pair);
+            expect(avgRate).to.be.a("number").that.is.greaterThan(0);
+        });
+    });
 })
