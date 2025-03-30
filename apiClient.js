@@ -11,4 +11,9 @@ async function getForexRates(series) {
     }
 }
 
-module.exports = { getForexRates };
+function calculateAverageRate(observarions, key) {
+    const rates = observarions.map((obs) => parseFloat(obs[key]));
+    return rates.reduce((sum, rate) => sum + rate, 0) / rates.length;
+}
+
+module.exports = { getForexRates, calculateAverageRate };

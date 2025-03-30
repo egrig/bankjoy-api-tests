@@ -1,5 +1,6 @@
 const { expect } = require("chai");
 const { getForexRates } = require("../apiClient");
+const { calculateAverageRate } = require("../apiClient");
 
 describe("Bank of Canada Forex API", function () {
     this.timeout(10000);    //Increase timeout for API calls
@@ -17,4 +18,10 @@ describe("Bank of Canada Forex API", function () {
             expect(error.message).to.equal("API request failed.");
         }
     })
+
+    it("should calculate the average CAD to USD rate for the last 10 weeks", async function () {
+        const data = await getForexRates("FXUSDCAD");
+        const avgRate = calculateAverageRate(data.observations, "FXUSDCAD");
+        expect(avgRate).to.be.a("number"). that.is.greaterThan(0);
+    });
 })
